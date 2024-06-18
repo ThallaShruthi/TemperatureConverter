@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('task3.jpeg'); /* Replace 'background_image.jpg' with your image file */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        filter: brightness(100%);
+        background-color: rgba(0, 0, 0, 0.74);
+    }
+    #converterContainer {
+        margin-top: 50px;
+        background-color: rgba(1, 1, 7, 0.745); /* Add a semi-transparent background color to make content readable */
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block; /* Ensure elements are displayed in line */
+    }
+    h1 {
+        font-weight: bold;
+        color: white;
+    }
+    input, select, button {
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 5px;
+        font-size: 16px;
+        display: block; /* Display each element on a new line */
+        margin-left: 128px;
+        text-align: center;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="converterContainer">
+    <h1>TEMPERATURE CONVERTER</h1>
+    <input type="text" id="temperatureInput" placeholder="Enter temperature" margin-left: 110px;color:"black"ś;>
+    <select id="unitSelect"style="
+    width: 206px;">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <!-- You can add an option for Kelvin here -->
+    </select>
+    <button onclick="convertTemperature()"style="
+    margin-left: 194px;
+">Convert</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+function convertTemperature() {
+    var input = document.getElementById("temperatureInput").value;
+    var unit = document.getElementById("unitSelect").value;
+    var resultArea = document.getElementById("result");
+    var convertedTemperature;
+
+    // Check if input is a number
+    if (isNaN(input)) {
+        resultArea.innerText = "Please enter a valid number";
+        return;
+    }
+
+    // Convert temperature based on selected unit
+    if (unit === "celsius") {
+        convertedTemperature = (input * 9/5) + 32; // Celsius to Fahrenheit
+        resultArea.innerText = input + "°C is " + convertedTemperature.toFixed(2) + "°F";
+    } else if (unit === "fahrenheit") {
+        convertedTemperature = (input - 32) * 5/9; // Fahrenheit to Celsius
+        resultArea.innerText = input + "°F is " + convertedTemperature.toFixed(2) + "°C";
+    }
+    // You can add another condition for Kelvin conversion here
+}
+</script>
+
+</body>
+</html>
